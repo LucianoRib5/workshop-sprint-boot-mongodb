@@ -1,4 +1,4 @@
-package com.lucianorib.workshopmongo.domain.resources;
+package com.lucianorib.workshopmongo.resources;
 import com.lucianorib.workshopmongo.domain.User;
 import com.lucianorib.workshopmongo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
