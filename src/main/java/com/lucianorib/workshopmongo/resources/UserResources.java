@@ -28,6 +28,7 @@ public class UserResources {
         User user = userService.findById(id);
         return ResponseEntity.ok().body(new UserDTO(user));
     }
+
     @PostMapping
     public ResponseEntity<Void> insertUser(@RequestBody UserDTO userDTO) {
         User user = userService.fromDTO(userDTO);
@@ -40,5 +41,11 @@ public class UserResources {
                 .toUri();
 
         return ResponseEntity.created(uri).build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable String id) {
+        userService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }
