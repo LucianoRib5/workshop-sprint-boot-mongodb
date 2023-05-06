@@ -2,6 +2,7 @@ package com.lucianorib.workshopmongo.config;
 
 import com.lucianorib.workshopmongo.domain.Post;
 import com.lucianorib.workshopmongo.domain.User;
+import com.lucianorib.workshopmongo.dto.AuthorDTO;
 import com.lucianorib.workshopmongo.repository.PostRepository;
 import com.lucianorib.workshopmongo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,23 +34,12 @@ public class Instantiation implements CommandLineRunner {
         User edwirges = new User(null, "Edwirges", "edwirges@email.com");
         User luciano = new User(null, "Luciano", "luciano@email.com");
 
-        Post post0 = new Post(
-                null,
-                sdf.parse("06/05/2023"),
-                "Learn Java",
-                "Ficando brabo no Java",
-                luciano
-        );
-
-        Post post1 = new Post(
-                null,
-                sdf.parse("06/05/2023"),
-                "Bikee",
-                "Aprendi a andar de bikeee!",
-                sebastian
-        );
-
         userRepository.saveAll(Arrays.asList(sebastian, anthony, edwirges, luciano));
-        postRepository.saveAll(Arrays.asList(post0, post1));
+
+        Post post0 = new Post(null,sdf.parse("06/05/2023"),"Learn Java","Ficando brabo no Java",new AuthorDTO(luciano));
+        Post post1 = new Post(null,sdf.parse("06/05/2023"),"Bikee","Aprendi a andar de bikeee!",new AuthorDTO(sebastian));
+        Post post2 = new Post(null,sdf.parse("07/05/2023"),"Learning...","Estudando no sabadão",new AuthorDTO(luciano));
+
+        postRepository.saveAll(Arrays.asList(post0, post1, post2));
     }
 }
